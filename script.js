@@ -1,59 +1,37 @@
-// Initialize Animate On Scroll (AOS)
-AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100
-});
-
-// Project Data
-const projects = [
+const myProjects = [
     {
         name: "HypeEngine",
-        description: "A customized Chrome startup page with advanced widgets and aesthetic design.",
-        link: "https://github.com/Shivam-042007/HypeEngine"
+        desc: "A powerful Chrome startup page with customizable widgets and clean UI.",
+        url: "https://github.com/Shivam-042007/HypeEngine"
     },
     {
         name: "3D Minecraft Web",
-        description: "A full-scale voxel sandbox game engine built to run in modern browsers.",
-        link: "https://github.com/Shivam-042007/3D-Minecraft-Web"
+        desc: "A high-performance voxel sandbox engine running entirely in the browser.",
+        url: "https://github.com/Shivam-042007/3D-Minecraft-Web"
     },
     {
         name: "ChessAI",
-        description: "An AI-powered chess platform with custom move-prediction algorithms.",
-        link: "https://github.com/Shivam-042007/ChessAI"
+        desc: "An intelligent chess application featuring minimax algorithms and move prediction.",
+        url: "https://github.com/Shivam-042007/ChessAI"
     },
     {
         name: "Savetheplanet.io",
-        description: "An interactive web-based game focused on environmental awareness.",
-        link: "https://github.com/Shivam-042007/Savetheplanet.io"
+        desc: "Interactive web game focused on environmental awareness and sustainability.",
+        url: "https://github.com/Shivam-042007/Savetheplanet.io"
     }
 ];
 
-// Inject Projects into HTML
-const projectContainer = document.getElementById('project-container');
+const container = document.getElementById('github-projects');
 
-projects.forEach((proj, index) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.setAttribute('data-aos', 'fade-up');
-    card.setAttribute('data-aos-delay', index * 100);
-    
-    card.innerHTML = `
-        <h3>${proj.name}</h3>
-        <p>${proj.description}</p>
-        <a href="${proj.link}" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600;">
-            Source Code <i class="fa-solid fa-arrow-right-long"></i>
-        </a>
+myProjects.forEach(project => {
+    const card = `
+        <div class="project-card">
+            <h3>${project.name}</h3>
+            <p>${project.desc}</p>
+            <a href="${project.url}" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 700;">
+                Source Code <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
     `;
-    projectContainer.appendChild(card);
-});
-
-// Smooth Scroll for Navigation Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+    container.innerHTML += card;
 });
